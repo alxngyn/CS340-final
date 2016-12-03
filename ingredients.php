@@ -1,8 +1,7 @@
 <?php include("static/header.php"); ?>
 
 <div class="container">
-  <h2>Striped Rows</h2>
-  <p>The .table-striped class adds zebra-stripes to a table:</p>
+  <h2>Ingredients</h2>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -34,7 +33,7 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         echo "<tr>";
         echo "<td>" . $row["name"] . "</td>";
-        echo "<td>" . $row["USDA_link"] . "</td>";
+        echo "<td><a href='" . $row["USDA_link"] . "' >" . $row["USDA_link"] . "</a>" .  "</td>";
         echo "</tr>";
     }
 
