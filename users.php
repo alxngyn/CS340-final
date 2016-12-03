@@ -1,3 +1,5 @@
+<?php include("static/header.php"); ?>
+
 <?php
 require_once('dbConVars.php');
 
@@ -26,3 +28,5 @@ if ($result->num_rows > 0) {
 }
 $conn->close();
 ?>
+
+<?php include("static/footer.php"); ?>
