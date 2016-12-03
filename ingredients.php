@@ -1,5 +1,16 @@
 <?php include("static/header.php"); ?>
 
+<div class="container">
+  <h2>Striped Rows</h2>
+  <p>The .table-striped class adds zebra-stripes to a table:</p>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>USDA_link</th>
+      </tr>
+    </thead>
+    <tbody>
 <?php
 require_once('dbConVars.php');
 
@@ -20,30 +31,20 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     // output data of each row into a bootstrap table
-    <div class="container">
-      <h2>Striped Rows</h2>
-      <p>The .table-striped class adds zebra-stripes to a table:</p>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>USDA_link</th>
-          </tr>
-        </thead>
-        <tbody>
     while($row = $result->fetch_assoc()) {
         echo "<tr>";
         echo "<td>" . $row["name"] . "</td>";
         echo "<td>" . $row["USDA_link"] . "</td>";
         echo "</tr>";
     }
-        </tbody>
-      </table>
-    </div>
+
 } else {
-    echo "0 results";
+    echo "<h2>0 results</h2>";
 }
 $conn->close();
 ?>
+</tbody>
+</table>
+</div>
 
 <?php include("static/footer.php"); ?>
