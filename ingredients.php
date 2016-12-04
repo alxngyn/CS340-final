@@ -25,10 +25,10 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-	$sql = "SELECT food_ingredients.name as ingredient, food_ingredients.USDA_link, food_recipes.name from food_ingredients "
-                . "INNER JOIN food_recipe_ingredients "
+	$sql = "SELECT food_ingredients.name as ingredient, food_ingredients.USDA_link as link, food_recipes.name from food_ingredients "
+                . "LEFT JOIN food_recipe_ingredients "
                 . "ON food_ingredients.id=food_recipe_ingredients.i_id "
-                . "INNER JOIN food_recipes "
+                . "LEFT JOIN food_recipes "
                 . "on food_recipe_ingredients.r_id=food_recipes.id ";
 
     // $sql = "SELECT id, name, USDA_link FROM food_ingredients";
@@ -39,7 +39,7 @@
         while($row = $result->fetch_assoc()) {
             echo "<tr>" ;
             echo "<td>" . $row["ingredient"] . "</td>";
-            echo "<td><a href='" . $row["food_ingredients.USDA_link"] . "' >" . "link" . "</a>" .  "</td>";
+            echo "<td><a href='" . $row["link"] . "' >" . "link" . "</a>" .  "</td>";
 			echo "<td>" . $row["name"] . "</td>";
             echo "</tr>";
         }
@@ -52,6 +52,9 @@
 ?>
 </tbody>
 </table>
+<a href="createIngredient.php">
+    <h4>Add to our list</h4>
+</a>
 </div>
 
 <?php include("static/footer.php"); ?>
