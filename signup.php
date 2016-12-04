@@ -16,8 +16,6 @@
       $query = "SELECT * FROM food_users WHERE userName = '$userName'";
       $data = mysqli_query($dbc, $query);
       if (mysqli_num_rows($data) == 0) {
-        // sha1 the password
-        $password1 = sha1($password1);
         // The username is unique, so insert the data into the database
         $query = "INSERT INTO food_users (userName, password, email) VALUES ('$userName', '$password1', '$email')";
         if( mysqli_query($dbc, $query) ){
