@@ -45,10 +45,23 @@
                                 <li>
                                     <a id="username" href="account.php">' . $userName . '</a>
                                 </li>
-
+								<li>
+									<a href="achievements.php">Achievements</a>
+								</li>
+								<li>
+									<a href="benefits.php">Health</a>
+								</li>
+								<li>
+									<a href="ingredients.php">Ingredients</a>
+								</li>
+								<li>
+									<a href="recipes.php">Recipes</a>
+								</li>
                                 <li>
                                     <a href="logout.php">Logout</a>
                                 </li>
+
+
                                 ';
                         } else{
                             echo'
@@ -61,7 +74,6 @@
                                 ';
                         }
                     ?>
-
                 </ul>
             </div>
         </nav>
