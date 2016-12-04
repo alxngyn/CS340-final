@@ -7,6 +7,13 @@
 ?>
 
 <!DOCTYPE html>
+
+<!--
+    Alex Nguyen
+    Desmond Lau
+    CS340 FALL 2015
+    FINAL
+-->
 <html>
 <head>
     <!-- Latest compiled and minified CSS -->
@@ -38,9 +45,7 @@
                                 <li>
                                     <a id="username" href="account.php">' . $userName . '</a>
                                 </li>
-                                // <li>
-                                //     <a href="favorites.php">Favorites</a>
-                                // </li>
+
                                 <li>
                                     <a href="logout.php">Logout</a>
                                 </li>
@@ -56,7 +61,6 @@
                                 ';
                         }
                     ?>
-
 
                 </ul>
             </div>
