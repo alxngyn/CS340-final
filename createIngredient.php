@@ -17,6 +17,7 @@
         if( mysqli_query($dbc, $query) ){
             // Confirm success with the user
             echo '<p>Your new ingredient has been successfully created.</p>';
+            echo "<h4><a href='ingredients.php' > Return </a></h4>";
         } else {
             echo '<p>Error, could not insert to database. Error:' . mysqli_error() .' </p>';
         }
