@@ -26,9 +26,9 @@
         die("Connection failed: " . $conn->connect_error);
     }
 	$sql = "SELECT food_ingredients.name as ingredient, food_ingredients.USDA_link, food_recipes.name from food_ingredients "
-                . "INNER JOIN food_recipe_ingredients "
+                . "LEFT JOIN food_recipe_ingredients "
                 . "ON food_ingredients.id=food_recipe_ingredients.i_id "
-                . "INNER JOIN food_recipes "
+                . "LEFT JOIN food_recipes "
                 . "on food_recipe_ingredients.r_id=food_recipes.id ";
 
     // $sql = "SELECT id, name, USDA_link FROM food_ingredients";
