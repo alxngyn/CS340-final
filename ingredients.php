@@ -52,6 +52,9 @@
 ?>
 </tbody>
 </table>
+<a href="createIngredient.php">
+    <h4>Add to our list</h4>
+</a>
 </div>
 
 <?php include("static/footer.php"); ?>
