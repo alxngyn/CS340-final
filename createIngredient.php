@@ -1,5 +1,7 @@
 <?php include("static/header.php"); ?>
 
+    <div class="container">
+
 <?php
   require_once('dbConVars.php');
   // Connect to the database
@@ -37,8 +39,6 @@
 
   mysqli_close($dbc);
 ?>
-
-    <div class="container">
         <div class="col-lg-4 col-lg-offset-4 form-group">
             <form method="post" class="form-signin" name="form" onsubmit="return validate(this);" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                 <h2 class="form-signup-heading">Add a new ingredient</h2>
