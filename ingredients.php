@@ -11,36 +11,64 @@
     </thead>
     <tbody>
 <?php
-require_once('dbConVars.php');
+    require_once('dbConVars.php');
 
-$servername = $DB_HOST;
-$username = $DB_USER;
-$password = $DB_PASSWORD;
-$dbname = $DB_NAME;
+    $servername = $DB_HOST;
+    $username = $DB_USER;
+    $password = $DB_PASSWORD;
+    $dbname = $DB_NAME;
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-$sql = "SELECT name, USDA_link FROM food_ingredients";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    // output data of each row into a bootstrap table
-    while($row = $result->fetch_assoc()) {
-        echo "<tr>";
-        echo "<td>" . $row["name"] . "</td>";
-        echo "<td><a href='" . $row["USDA_link"] . "' >" . $row["USDA_link"] . "</a>" .  "</td>";
-        echo "</tr>";
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
     }
 
-} else {
-    echo "<h2>0 results</h2>";
-}
-$conn->close();
+    $sql = "SELECT id, name, USDA_link FROM food_ingredients";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // output data of each row into a bootstrap table
+        while($row = $result->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td>" . $row["name"] . "</td>";
+            echo "<td><a href='" . $row["USDA_link"] . "' >" . "link" . "</a>" .  "</td>";
+            echo $result["id"];
+
+            $sql2 = "SELECT DISTINCT food_recipes.name from food_ingredients "
+                . "INNER JOIN food_recipe_ingredients "
+                . "ON food_ingredients.id=food_recipe_ingredients.i_id "
+                . "INNER JOIN food_recipes "
+                . "on food_recipe_ingredients.r_id=food_recipes.id "
+                . "where food_ingredients.id=" . $row["id"] ;
+            $result2 = $conn->query($sql2);
+            if ($result2->num_rows > 0){
+                while($row = $results2->fetch_assoc()){
+                    echo $row["food_recipes.name"];
+                }
+            }
+            echo "<td>";
+
+            echo "</td>";
+            echo "</tr>";
+        }
+
+    } else {
+        echo "<h2>0 results</h2>";
+    }
+
+    echo $result["id"];
+    $sql2 = "SELECT DISTINCT food_recipes.name from food_ingredients "
+        . "INNER JOIN food_recipe_ingredients "
+        . "ON food_ingredients.id=food_recipe_ingredients.i_id "
+        . "INNER JOIN food_recipes "
+        . "on food_recipe_ingredients.r_id=food_recipes.id "
+        . "where food_ingredients.id=" . $result["id"] ;
+    $result2 = $conn->query($sql2);
+
+
+    $conn->close();
 ?>
 </tbody>
 </table>
