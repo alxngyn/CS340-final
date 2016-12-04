@@ -7,6 +7,7 @@
       <tr>
         <th>Name</th>
         <th>USDA_link</th>
+        <th>Recipes</th>
       </tr>
     </thead>
     <tbody>
@@ -45,28 +46,16 @@
             $result2 = $conn->query($sql2);
             if ($result2->num_rows > 0){
                 while($row = $results2->fetch_assoc()){
-                    echo $row["food_recipes.name"];
+                    echo "<td>" . $row["food_recipes.name"] . "</td>";
                 }
             }
-            echo "<td>";
 
-            echo "</td>";
             echo "</tr>";
         }
 
     } else {
         echo "<h2>0 results</h2>";
     }
-
-    echo $result["id"];
-    $sql2 = "SELECT DISTINCT food_recipes.name from food_ingredients "
-        . "INNER JOIN food_recipe_ingredients "
-        . "ON food_ingredients.id=food_recipe_ingredients.i_id "
-        . "INNER JOIN food_recipes "
-        . "on food_recipe_ingredients.r_id=food_recipes.id "
-        . "where food_ingredients.id=" . $result["id"] ;
-    $result2 = $conn->query($sql2);
-
 
     $conn->close();
 ?>
