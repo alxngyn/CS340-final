@@ -52,8 +52,12 @@
 </tbody>
 </table>
 <a href="createAchievements.php">
-    <h4>Add to our list</h4>
+    <h4>Add a new achievement</h4>
 </a>
+<a href="create_user_achievements.php">
+	<h4>Track your own achievements</h4>
+</a>
+
 </div>
 
 <?php include("static/footer.php"); ?>
