@@ -35,6 +35,7 @@
 								<th>Description</th>
 								<th>Link to Recipe</th>
 								<th>Add to List</th>
+								<th>Add Ingredients</th>
 							</tr>
 						</thead>
 						<tbody>";
@@ -68,6 +69,15 @@
 				}
 			
 				echo	"</form></td>";
+
+				echo "<td>";
+				echo "<form action='linkIngredients.php' method='POST'>";
+				echo "<input type='hidden' name='recipe_id' value='" . $recipeID ."'>";
+				echo "<input type='hidden' name='recipe_name' value='" . $row['name'] ."'>";
+				echo "<input type='submit' value='Update Ingredients'>";
+				echo "</form>";
+				echo "</td>";
+
 				echo "</tr>";
 
 			  	mysqli_free_result($checkResult);
