@@ -57,6 +57,10 @@
 <a href="createHealth.php">
     <h4>Add to our list</h4>
 </a>
+<a href="create_recipe_health.php">
+    <h4>Add a health benefit to a recipe</h4>
+</a>
+
 </div>
 
 <?php include("static/footer.php"); ?>
