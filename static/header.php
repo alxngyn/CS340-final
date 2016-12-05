@@ -49,7 +49,7 @@
 									<a href="achievements.php">Achievements</a>
 								</li>
 								<li>
-									<a href="benefits.php">Health</a>
+									<a href="health.php">Health</a>
 								</li>
 								<li>
 									<a href="ingredients.php">Ingredients</a>
