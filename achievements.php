@@ -24,6 +24,7 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
+	// select achievement, and username from the relationship table with proper names.
 	$sql = '
 			SELECT food_achievements.id, food_achievements.name AS achievement_name, food_users.username AS user_name, food_achievements.description AS description
 			FROM food_achievements
@@ -61,4 +62,3 @@
 </div>
 
 <?php include("static/footer.php"); ?>
-

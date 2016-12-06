@@ -2,10 +2,12 @@
 
 <?php
 	require_once('dbConVars.php');
-
+	// if SESSION is not set let the user know
 	if(!isset($_SESSION['valid_user'])){
 		echo "<h2>Please login first before continuing</h2>";
-	}else{
+	}
+	// otherwise show them the account page
+	else{
 		echo "<div class='container'>";
 		echo "<h3>Saved Recipes</h3>";
 
@@ -41,6 +43,7 @@
 
 		if ($result->num_rows > 0) {
 		    // output data of each row
+			// for each row show the name, description, and a recipe link with a button to delete the recipe from the user.
 		    while($row = $result->fetch_assoc()) {
 		    	echo "<tr>
 						<td>" . $row['name'] . "</td>

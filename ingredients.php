@@ -25,13 +25,13 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
+	// select all ingredients and relating recipes
 	$sql = "SELECT food_ingredients.name as ingredient, food_ingredients.USDA_link as link, food_recipes.name from food_ingredients "
                 . "LEFT JOIN food_recipe_ingredients "
                 . "ON food_ingredients.id=food_recipe_ingredients.i_id "
                 . "LEFT JOIN food_recipes "
                 . "on food_recipe_ingredients.r_id=food_recipes.id ";
 
-    // $sql = "SELECT id, name, USDA_link FROM food_ingredients";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {

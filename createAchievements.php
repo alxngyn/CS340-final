@@ -6,17 +6,18 @@
   require_once('dbConVars.php');
   // Connect to the database
   $dbc = mysqli_connect($DB_HOST, $DB_USER, $DB_PASSWORD, $DB_NAME);
-
+  // if user submits, run this block
   if (isset($_POST['submit'])) {
     $name = mysqli_real_escape_string($dbc, trim($_POST['name']));
     $description = mysqli_real_escape_string($dbc, trim($_POST['description']));
-
+	// if post is empty, skip the mysql insert and print error
     if (!empty($name) && !empty($description)) {
       $query = "SELECT * FROM food_achievements WHERE name = '$name'";
       $data = mysqli_query($dbc, $query);
       if (mysqli_num_rows($data) == 0) {
         $query = "INSERT INTO food_achievements (name, description) VALUES ('$name', '$description')";
-        if( mysqli_query($dbc, $query) ){
+        // attempt insert
+		if( mysqli_query($dbc, $query) ){
             // Confirm success with the user
             echo '<p>Your new achievement has been successfully created.</p>';
             echo "<h4><a href='achievements.php' > Return </a></h4>";
@@ -32,6 +33,7 @@
         $userName = "";
       }
     }
+	// if nothing was submited.
     else {
       echo '<p class="error">You must enter all information required.</p>';
     }
