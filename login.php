@@ -13,7 +13,7 @@
 		// $password = sha1($password);
 
 		// run query to check
-		$query = "SELECT * FROM food_users WHERE username='$username' and password='$password'";
+		$query = "SELECT id, username, email FROM food_users WHERE username='$username' and password='$password'";
 		$result = mysqli_query($dbc, $query);
 		if (mysqli_num_rows($result) == 1) {
 			// The log-in is OK so set the user ID and username session vars (and cookies), and redirect to the home page
@@ -57,6 +57,7 @@
                         <label for="inputPassword" class="sr-only">Password</label>
                         <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
                         <button class="btn btn-lg btn-primary btn-block" onclick="checkLogin()">Sign in</button>
+						<h5><a href="signup.php">Register an account</a></h5>
                 </div>
             </div>
             ';
